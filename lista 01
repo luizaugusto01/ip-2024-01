@@ -1,0 +1,381 @@
+Algoritmo MediaNotas
+// Declaração das variáveis
+real: nota1, nota2, nota3, media
+// Entrada das três notas do aluno
+Escreva("Digite as três notas do aluno separadas por um espaço:
+")
+Leia(nota1, nota2, nota3)
+// Calcula a média aritmética das três notas
+media <- (nota1 + nota2 + nota3) / 3
+// Saída da média aritmética
+Escreva("MEDIA = ", media, "\n")
+// Verifica se o aluno foi aprovado ou reprovado
+Se media >= 6.0 Então
+Escreva("APROVADO\n")
+Senão
+Escreva("REPROVADO\n")
+FimSe
+FimAlgoritmo
+
+Algoritmo RendaTotalDoJogo
+// Início do programa principal
+Início
+// Declaração das variáveis
+inteiro: numCasos, i
+real: publicoTotal, percentPopular, percentGeral, percentArquibancada,
+percentCadeiras, rendaTotal
+// Entrada do número de casos de teste
+Escreva("Digite o número de casos de teste: ")
+Leia(numCasos)
+// Loop para cada caso de teste
+i <- 1
+Enquanto i <= numCasos Faça
+// Entrada dos valores para o caso de teste atual
+Escreva("Digite o público total e as percentagens de cada categoria
+para o caso de teste ", i, ": ")
+Leia(publicoTotal, percentPopular, percentGeral,
+percentArquibancada, percentCadeiras)
+// Calcula a renda total do jogo
+rendaTotal <- (publicoTotal * percentPopular / 100 * 1) + (publicoTotal *
+percentGeral / 100 * 5) + (publicoTotal * percentArquibancada / 100 * 10) +
+(publicoTotal * percentCadeiras / 100 * 20)
+// Saída da renda total do jogo para o caso de teste atual
+Escreva("A RENDA DO JOGO N.", i, " E = ", rendaTotal)
+i <- i + 1
+FimEnquanto
+Fim
+FimAlgoritmo
+
+Algoritmo ConcatenacaoQuadrado
+// Declaração das variáveis
+inteiro: n1, n2, n3, numeroConcatenado
+// Entrada dos três números inteiros
+Escreva("Digite o primeiro número (centena): ")
+Leia(n1)
+Escreva("Digite o segundo número (dezena): ")
+Leia(n2)
+Escreva("Digite o terceiro número (unidade): ")
+Leia(n3)
+// Verifica se algum número tem mais de um dígito
+Se n1 < 0 ou n1 > 9 ou n2 < 0 ou n2 > 9 ou n3 < 0 ou n3 > 9 Então
+Escreva("DIGITO INVALIDO")
+Senão
+// Calcula o número inteiro resultante da concatenação dos três números
+numeroConcatenado <- n1 * 100 + n2 * 10 + n3
+// Verifica se o número resultante tem zeros à esquerda
+Se numeroConcatenado >= 100 Então
+// Calcula o quadrado do número resultante
+quadrado <- numeroConcatenado * numeroConcatenado
+// Saída do número concatenado e seu quadrado
+Escreva(numeroConcatenado, ", ", quadrado)
+Senão
+Escreva("DIGITO INVALIDO")
+FimSe
+FimSe
+FimAlgoritmo
+
+Algoritmo CalculoEnergia
+// Declaração das variáveis
+real: salarioMinimo, qtdKW, custoKW, custoConsumo, custoDesconto
+// Entrada do valor do salário mínimo e da quantidade de kW gasta pela residência
+Escreva("Digite o valor do salário mínimo: ")
+Leia(salarioMinimo)
+Escreva("Digite a quantidade de kW gasta pela residência: ")
+Leia(qtdKW)
+// Calcula o custo por kW
+custoKW <- (salarioMinimo * 0.7) / 100
+// Calcula o custo do consumo da residência
+custoConsumo <- custoKW * qtdKW
+// Calcula o custo com desconto de 10%
+custoDesconto <- custoConsumo * 0.9
+// Saída dos resultados
+Escreva("Custo por kW: R$ ", custoKW)
+Escreva("Custo do consumo: R$ ", custoConsumo)
+Escreva("Custo com desconto: R$ ", custoDesconto)
+FimAlgoritmo
+
+Algoritmo CalculoContaAgua
+// Declaração das variáveis
+inteiro: contaCliente
+real: consumoAgua, valorConta
+caractere: tipoConsumidor
+// Entrada dos dados
+Escreva("Digite a conta do cliente, o consumo de água em metros cúbicos e o tipo de
+consumidor (R - Residencial, C - Comercial, I - Industrial), separados por espaço: ")
+Leia(contaCliente, consumoAgua, tipoConsumidor)
+// Calcula o valor da conta de acordo com o tipo de consumidor
+Se tipoConsumidor = 'R' Então
+// Residencial: R$ 5,00 de taxa mais R$ 0,05 por metros cúbicos gastos
+valorConta <- 5 + (0.05 * consumoAgua)
+SenãoSe tipoConsumidor = 'C' Então
+// Comercial: R$ 500,00 para os primeiros 80 metros cúbicos gastos mais R$ 0,25 por
+metros cúbicos gastos
+Se consumoAgua <= 80 Então
+valorConta <- 500
+Senão
+valorConta <- 500 + (0.25 * (consumoAgua - 80))
+FimSe
+SenãoSe tipoConsumidor = 'I' Então
+// Industrial: R$ 800,00 para os primeiros 100 metros cúbicos gastos mais R$ 0,04 por
+metros cúbicos gastos
+Se consumoAgua <= 100 Então
+valorConta <- 800
+Senão
+valorConta <- 800 + (0.04 * (consumoAgua - 100))
+FimSe
+FimSe
+// Saída dos resultados
+Escreva("CONTA = ", contaCliente, "\n")
+Escreva("VALOR DA CONTA = ", valorConta, "\n")
+FimAlgoritmo
+
+Algoritmo ConversaoFahrenheitCelsius
+// Declaração das variáveis
+inteiro: n, i
+real: temperaturaFahrenheit, temperaturaCelsius
+// Entrada do número de temperaturas em Fahrenheit a serem convertidas
+Escreva("Digite o número de temperaturas em Fahrenheit a serem convertidas: ")
+Leia(n)
+// Loop para cada temperatura a ser convertida
+Para i de 1 até n Passo 1
+// Entrada da temperatura em Fahrenheit
+Escreva("Digite a temperatura em Fahrenheit: ")
+Leia(temperaturaFahrenheit)
+// Calcula a temperatura equivalente em Celsius
+temperaturaCelsius <- 5 * (temperaturaFahrenheit - 32) / 9
+// Saída da temperatura equivalente em Celsius
+Escreva(temperaturaFahrenheit, " FAHRENHEIT EQUIVALE A ", temperaturaCelsius, " CELSIUS\n")
+FimPara
+FimAlgoritmo
+
+Algoritmo ConversaoMetrica
+// Declaração das variáveis
+real: temperaturaFahrenheit, temperaturaCelsius, quantidadeChuvaPolegadas,
+quantidadeChuvaMilimetros
+// Entrada da temperatura em Fahrenheit
+Escreva("Digite a temperatura em Fahrenheit: ")
+Leia(temperaturaFahrenheit)
+// Entrada da quantidade de chuva em polegadas
+Escreva("Digite a quantidade de chuva em polegadas: ")
+Leia(quantidadeChuvaPolegadas)
+// Calcula a temperatura equivalente em Celsius
+temperaturaCelsius <- (5 * temperaturaFahrenheit - 160) / 9
+// Calcula a quantidade de chuva equivalente em milímetros
+quantidadeChuvaMilimetros <- quantidadeChuvaPolegadas * 25.4
+// Saída dos resultados
+Escreva("O VALOR EM CELSIUS = ", temperaturaCelsius, "\n")
+Escreva("A QUANTIDADE DE CHUVA E = ", quantidadeChuvaMilimetros, "\n")
+FimAlgoritmo
+
+Algoritmo CalculoCustoLata
+// Declaração das variáveis
+real: raio, altura, custo, areaBase, areaLateral, areaTotal
+// Declaração da constante π
+constante real PI <- 3.14159
+// Entrada do raio da lata
+Escreva("Digite o raio da lata em metros: ")
+Leia(raio)
+// Entrada da altura da lata
+Escreva("Digite a altura da lata em metros: ")
+Leia(altura)
+// Calcula a área da base da lata (círculo)
+areaBase <- PI * raio * raio
+// Calcula a área lateral da lata
+areaLateral <- 2 * PI * raio * altura
+// Calcula a área total da lata
+areaTotal <- 2 * areaBase + areaLateral
+// Calcula o custo da lata (custo do alumínio por m2 * área total)
+custo <- 100 * areaTotal
+// Saída do valor do custo da lata
+Escreva("O VALOR DO CUSTO E = ", custo, "\n")
+FimAlgoritmo
+
+Algoritmo CalculoDiscriminante
+// Declaração das variáveis
+real: A, B, C, discriminante
+// Entrada dos coeficientes A, B e C
+Escreva("Digite o valor do coeficiente A: ")
+Leia(A)
+Escreva("Digite o valor do coeficiente B: ")
+Leia(B)
+Escreva("Digite o valor do coeficiente C: ")
+Leia(C)
+// Calcula o discriminante (∆)
+discriminante <- B * B - 4 * A * C
+// Saída do valor do discriminante
+Escreva("O VALOR DE DELTA E = ", discriminante, "\n")
+FimAlgoritmo
+
+Algoritmo CalculoDeterminante
+// Declaração das variáveis
+real: a, b, c, d, determinante
+// Entrada dos elementos da matriz
+Escreva("Digite o valor de a: ")
+Leia(a)
+Escreva("Digite o valor de b: ")
+Leia(b)
+Escreva("Digite o valor de c: ")
+Leia(c)
+Escreva("Digite o valor de d: ")
+Leia(d)
+// Calcula o determinante da matriz
+determinante <- (a * d) - (b * c)
+// Saída do valor do determinante
+Escreva("O VALOR DO DETERMINANTE E = ", determinante, "\n")
+FimAlgoritmo
+
+Algoritmo VerificarDivisibilidade
+// Declaração das variáveis
+inteiro: numero
+// Entrada do número inteiro
+Escreva("Digite um número inteiro: ")
+Leia(numero)
+// Verifica se o número é divisível por três e por cinco
+Se numero % 3 = 0 e numero % 5 = 0 Então
+Escreva("O NUMERO E DIVISIVEL\n")
+Senão
+Escreva("O NUMERO NAO E DIVISIVEL\n")
+FimSe
+FimAlgoritmo
+
+Algoritmo CalculoAluguelCharrete
+// Declaração das variáveis
+real: horasUtilizadas, valorTotal
+// Entrada das horas utilizadas
+Escreva("Digite o número de horas que a charrete foi utilizada: ")
+Leia(horasUtilizadas)
+// Calcula o valor total do aluguel
+Se horasUtilizadas >= 3 Então
+valorTotal <- 10 * (horasUtilizadas / 3)
+Senão
+valorTotal <- 5 * horasUtilizadas
+FimSe
+// Saída do valor total do aluguel
+Escreva("O VALOR A PAGAR E = ", valorTotal, "\n")
+FimAlgoritmo
+
+Algoritmo ConversaoNotaConceito
+// Declaração das variáveis
+real: nota
+caractere: conceito
+// Entrada da nota
+Escreva("Digite a nota do aluno (entre 0 e 10, com uma casa decimal): ")
+Leia(nota)
+// Converte a nota em conceito de acordo com a tabela fornecida
+Se nota >= 9.0 Então
+conceito <- 'A'
+SenãoSe nota >= 7.5 Então
+conceito <- 'B'
+SenãoSe nota >= 6.0 Então
+conceito <- 'C'
+Senão
+conceito <- 'D'
+FimSe
+// Saída da nota e do conceito correspondente⬤
+
+Algoritmo CalculoVolumePiramide
+// Declaração das variáveis
+real: altura, aresta, volume, areaBase
+// Entrada da altura da pirâmide e da aresta do hexágono
+Escreva("Digite a altura da pirâmide e o comprimento da aresta do hexágono (em metros),
+separados por um espaço: ")
+Leia(altura, aresta)
+// Calcula a área da base do hexágono
+areaBase <- 3 * aresta^2 * sqrt(3) / 2
+// Calcula o volume da pirâmide
+volume <- 1/3 * areaBase * altura
+// Saída do volume da pirâmide
+Escreva("O VOLUME DA PIRAMIDE E = ", volume, " METROS CUBICOS\n")
+FimAlgoritmo
+
+Algoritmo QuadradoNumerosPares
+// Declaração das variáveis
+inteiro: N, i
+// Entrada do valor inteiro N
+Escreva("Digite um valor inteiro N (5 < N < 2000): ")
+Leia(N)
+// Loop para cada número par de 1 até N
+Para i de 2 até N Passo 2
+// Calcula o quadrado do número par
+Escreva(i, "^2 = ", i * i, "\n")
+FimPara
+FimAlgoritmo
+
+Algoritmo ReajusteSalario
+// Declaração das variáveis
+real: salario, salarioReajustado
+// Entrada do salário do funcionário
+Escreva("Digite o salário do funcionário: ")
+Leia(salario)
+// Verifica o valor do salário e aplica o reajuste correspondente
+Se salario <= 300.00 Então
+salarioReajustado <- salario * 1.5 // Reajuste de 50%
+Senão
+salarioReajustado <- salario * 1.3 // Reajuste de 30%
+FimSe
+// Saída do salário reajustado
+Escreva("SALARIO COM REAJUSTE = ", salarioReajustado, "\n")
+FimAlgoritmo
+
+Algoritmo VerificarNumeroPar
+// Declaração das variáveis
+inteiro: x, y, i
+// Entrada dos números inteiros x e y
+Escreva("Digite dois números inteiros separados por um espaço:
+")
+Leia(x, y)
+// Verifica se o primeiro número é par
+Se x % 2 = 0 Então
+// Se for par, imprime a sequência de números pares
+Para i de 0 até y - 1
+Escreva(x + 2 * i, " ")
+FimPara
+Escreva("\n")
+Senão
+// Se não for par, imprime a mensagem de erro
+Escreva("O PRIMEIRO NUMERO NAO E PAR\n")
+FimSe
+FimAlgoritmo
+
+Algoritmo SomaProgressaoAritmetica
+// Declaração das variáveis
+inteiro: a1, r, n, soma, termo
+// Entrada dos valores iniciais da progressão aritmética, razão e quantidade de elementos
+Escreva("Digite o valor inicial da progressão aritmética, a razão e a quantidade de elementos
+separados por um espaço: ")
+Leia(a1, r, n)
+// Inicializa a soma como zero
+soma <- 0
+// Calcula a soma dos n primeiros termos da progressão aritmética
+Para termo de a1 até a1 + (n - 1) * r Passo r
+soma <- soma + termo
+FimPara
+// Saída da soma dos n primeiros termos da progressão aritmética
+Escreva(soma, "\n")
+FimAlgoritmo
+
+Algoritmo SomaReciproca
+// Declaração das variáveis
+inteiro: n, k
+real: soma
+// Entrada do valor inteiro positivo
+Escreva("Digite um número inteiro positivo e maior que 1: ")
+Leia(n)
+// Verifica se o número atende às especificações da entrada
+Se n <= 1 Então
+
+Algoritmo ConverterTempoParaSegundos
+// Declaração das variáveis
+inteiro: horas, minutos, segundos, tempoEmSegundos
+// Entrada das horas, minutos e segundos
+Escreva("Digite o valor das horas: ")
+Leia(horas)
+Escreva("Digite o valor dos minutos: ")
+Leia(minutos)
+Escreva("Digite o valor dos segundos: ")
+Leia(segundos)
+// Calcula o tempo total em segundos
+tempoEmSegundos <- horas * 3600 + minutos * 60 + segundos
+// Saída do tempo total em segundos
+Escreva("O TEMPO EM SEGUNDOS E = ", tempoEmSegundos, "\n")
+FimAlgoritmo
