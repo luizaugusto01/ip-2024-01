@@ -4,7 +4,7 @@ real: nota1, nota2, nota3, media
 // Entrada das três notas do aluno
 Escreva("Digite as três notas do aluno separadas por um espaço:
 ")
-Leia(nota1, nota2, nota3)
+Leia(notamk1, nota2, nota3)
 // Calcula a média aritmética das três notas
 media <- (nota1 + nota2 + nota3) / 3
 // Saída da média aritmética

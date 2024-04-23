@@ -2,28 +2,25 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
+var nota1, nota2, nota3 float64
+
 func main() {
-	var notasString string
-	fmt.Println("Digite as três notas do aluno separadas por espaço:")
-	fmt.Scanln(&notasString)
+	fmt.Println("Digite a primeira nota: ")
+	fmt.Scanln(&nota1)
+	fmt.Println("Digite a segunda nota: ")
+	fmt.Scanln(&nota2)
+	fmt.Println("Digite a terceira nota: ")
+	fmt.Scanln(&nota3)
 
-	notas := strings.Split(notasString, " ")
-	var total float64
-	for _, nota := range notas {
-		notaFloat, _ := strconv.ParseFloat(nota, 64)
-		total += notaFloat
-	}
+	media := (nota1 + nota2 + nota3) / 3
 
-	media := total / float64(len(notas))
-	fmt.Printf("MEDIA = %.2f\n", media)
+	fmt.Println("media ", media)
 
-	if media >= 6.0 {
-		fmt.Println("APROVADO")
+	if media >= 6 {
+		fmt.Println("aprovado")
 	} else {
-		fmt.Println("REPROVADO")
+		fmt.Println("reprovado")
 	}
 }

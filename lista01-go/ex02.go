@@ -4,19 +4,28 @@ import (
 	"fmt"
 )
 
+var casosteste, pessoatotal int
+var percpopular, pergeral, perarquibancada, percadeiras, rendatotal float64
+
 func main() {
-	var casosTeste int
-	fmt.Scanln(&casosTeste)
 
-	for i := 1; i <= casosTeste; i++ {
-		var publicoTotal, percentPopular, percentGeral, percentArquibancada, percentCadeiras float64
-		fmt.Scanln(&publicoTotal, &percentPopular, &percentGeral, &percentArquibancada, &percentCadeiras)
+	fmt.Print("Digite o número de casos de teste: ")
+	fmt.Scan(&casosteste)
 
-		rendaTotal := (percentPopular * 0.01 * 1.0) +
-			(percentGeral * 0.01 * 5.0) +
-			(percentArquibancada * 0.01 * 10.0) +
-			(percentCadeiras * 0.01 * 20.0)
+	for i := 1; i <= casosteste; i++ {
+		fmt.Println("digite o número de pessoas: ")
+		fmt.Scan(&pessoatotal)
+		fmt.Println("digite percpopular: ")
+		fmt.Scan(&percpopular)
+		fmt.Println("digite o percgeral: ")
+		fmt.Scan(&pergeral)
+		fmt.Println("digite o percarquibancada: ")
+		fmt.Scan(&perarquibancada)
+		fmt.Println("digite o número de perccadeiras: ")
+		fmt.Scan(&percadeiras)
 
-		fmt.Printf("A RENDA DO JOGO N. %d E = %.2f\n", i, rendaTotal)
+		rendatotal = (percpopular * float64(pessoatotal) * 1) + (pergeral * float64(pessoatotal) * 5) + (perarquibancada * float64(pessoatotal) * 10) + (percadeiras * float64(pessoatotal) * 20)
+
+		fmt.Printf("A renda do jogo %v é %v\n\n", casosteste, rendatotal)
 	}
 }

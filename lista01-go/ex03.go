@@ -1,31 +1,22 @@
 package main
 
 import (
-    "fmt"
-    "strconv"
+	"fmt"
 )
 
+var n1, n2, n3, numero int
+
 func main() {
-    var n1, n2, n3 int
-    fmt.Println("Digite os três números inteiros separados por espaço:")
-    fmt.Scanln(&n1, &n2, &n3)
 
-    // Verifica se algum dos números tem mais de um dígito
-    if temMaisDeUmDigito(n1) || temMaisDeUmDigito(n2) || temMaisDeUmDigito(n3) {
-        fmt.Println("DIGITO INVALIDO")
-        return
-    }
+	fmt.Println("digite os números a, b, c ")
+	fmt.Scan(&n1, &n2, &n3)
 
-    // Calcula o número resultante da concatenação dos três números
-    numero := n1*100 + n2*10 + n3
-    // Calcula o quadrado do número
-    quadrado := numero * numero
+	if n1 < 0 && n1 > 9 && n2 < 0 && n2 > 9 && n3 < 0 && n3 > 9 {
+		fmt.Println("digito invalido")
+		return
+	}
 
-    // Imprime o número e seu quadrado
-    fmt.Printf("%d, %d\n", numero, quadrado)
-}
+	numero = (n1*100 + n2*10 + n3)
+	fmt.Printf("%v, %v", numero, numero*numero)
 
-// Função para verificar se um número tem mais de um dígito
-func temMaisDeUmDigito(num int) bool {
-    return num < 10 || num > 99
 }
