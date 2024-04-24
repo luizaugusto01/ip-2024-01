@@ -1,26 +1,19 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
 func main() {
-	var N int
+	var x, y int
+	fmt.Print("Digite dois números inteiros separados por espaço: ")
+	fmt.Scanln(&x, &y)
 
-	// Entrada do valor inteiro N
-	fmt.Print("Digite um valor inteiro N (5 < N < 2000): ")
-	fmt.Scan(&N)
-
-	// Verificação do intervalo de N
-	if N <= 5 || N >= 2000 {
-		fmt.Println("O valor de N deve estar entre 5 e 2000.")
-		return
-	}
-
-	// Loop para gerar o quadrado dos valores pares até N
-	for i := 2; i <= N; i += 2 {
-		quadrado := int(math.Pow(float64(i), 2))
-		fmt.Printf("%d^2 = %d\n", i, quadrado)
+	if x%2 == 0 { // Verifica se x é par
+		for i := 1; i <= y; i++ {
+			fmt.Printf("%d ", x)
+			x += 2 // Incrementa x para o próximo número par
+		}
+		fmt.Println() // Adiciona uma nova linha após a sequência
+	} else {
+		fmt.Println("O PRIMEIRO NUMERO NAO E PAR") // Imprime mensagem se x não for par
 	}
 }

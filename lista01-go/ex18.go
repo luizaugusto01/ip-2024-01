@@ -3,22 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	var x, y int
+	var a1, r, n int
+	fmt.Println("Digite o valor inicial, a razão e o número de elementos da progressão aritmética:")
+	fmt.Scanln(&a1, &r, &n)
 
-	// Entrada dos números inteiros x e y
-	fmt.Print("Digite dois números inteiros separados por espaço: ")
-	fmt.Scan(&x, &y)
-
-	// Verificação se x é par
-	if x%2 == 0 {
-		// Imprimir sequência de números pares a partir de x
-		for i := 0; i < y; i++ {
-			fmt.Printf("%d ", x)
-			x += 2
-		}
-		fmt.Println()
-	} else {
-		// Imprimir mensagem se x não for par
-		fmt.Println("O PRIMEIRO NUMERO NAO E PAR")
+	soma := 0
+	for i := 0; i < n; i++ {
+		termo := a1 + i*r // Calcula o i-ésimo termo da progressão
+		soma += termo     // Soma o termo à variável soma
+		fmt.Println(soma)
 	}
+
+	fmt.Printf("A soma dos %d primeiros elementos da progressão aritmética é: %d\n", n, soma)
 }

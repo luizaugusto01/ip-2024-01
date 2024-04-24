@@ -1,26 +1,18 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
 func main() {
-	var N int
+	var salario float64
+	fmt.Print("Digite o salário do funcionário: ")
+	fmt.Scanln(&salario)
 
-	// Entrada do valor inteiro N
-	fmt.Print("Digite um valor inteiro N (5 < N < 2000): ")
-	fmt.Scan(&N)
-
-	// Verificação do intervalo de N
-	if N <= 5 || N >= 2000 {
-		fmt.Println("O valor de N deve estar entre 5 e 2000.")
-		return
+	var salarioReajustado float64
+	if salario <= 300 {
+		salarioReajustado = salario * 1.5 // Reajuste de 50%
+	} else {
+		salarioReajustado = salario * 1.3 // Reajuste de 30%
 	}
 
-	// Loop para gerar o quadrado dos valores pares até N
-	for i := 2; i <= N; i += 2 {
-		quadrado := int(math.Pow(float64(i), 2))
-		fmt.Printf("%d^2 = %d\n", i, quadrado)
-	}
+	fmt.Printf("SALARIO COM REAJUSTE = %.2f\n", salarioReajustado)
 }
