@@ -1,63 +1,55 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
-func calcularNotaFinal(provas []float64, listas []float64, trabalhoFinal float64) float64 {
-    var somaProvas, somaListas float64
-
-    for _, nota := range provas {
-        somaProvas += nota
-    }
-
-    for _, nota := range listas {
-        somaListas += nota
-    }
-
-    mediaProvas := somaProvas / float64(len(provas))
-    mediaListas := somaListas / float64(len(listas))
-
-    notaFinal := 0.7*mediaProvas + 0.15*mediaListas + 0.15*trabalhoFinal
-
-    return notaFinal
-}
-
 func main() {
-    var matricula int
-    for {
-        fmt.Scan(&matricula)
-        if matricula == -1 {
-            break
-        }
 
-        var provas [8]float64
-        var listas [5]float64
-        var trabalhoFinal, presenca float64
+	//matrícula
+	var matricula float64
+	fmt.Print(" digite a sua matrícula ")
+	fmt.Scanln(&matricula)
 
-        for i := 0; i < 8; i++ {
-            fmt.Scan(&provas[i])
-        }
+	//notasprovas
+	var notas [8]float64
+	mnota := 0.0
+	for i := 0; i < 8; i++ {
+		fmt.Println("digite um a nota", i+1)
+		fmt.Scanln(&notas[i])
+		mnota = mnota + notas[i]
+	}
 
-        for i := 0; i < 5; i++ {
-            fmt.Scan(&listas[i])
-        }
+	//notalistas
+	var listas [5]float64
+	mlista := 0.0
+	for j := 0; j < 5; j++ {
+		fmt.Println("digite as notas da lista", j+1)
+		fmt.Scanln(&notas[j])
+		mlista = mlista + listas[j]
+	}
 
-        fmt.Scan(&trabalhoFinal, &presenca)
+	//nota trabalho final
+	var notatrabalhofinal float64
+	fmt.Println("digite a nota do trabalho final")
+	fmt.Scan(&notatrabalhofinal)
 
-        notaFinal := calcularNotaFinal(provas[:], listas[:], trabalhoFinal)
+	//frequencia
+	var freq int
+	fmt.Println("digite sua frequencia")
+	fmt.Scan(&freq)
 
-        var situacaoFinal string
-        if notaFinal >= 6 && (presenca/128)*100 >= 75 {
-            situacaoFinal = "APROVADO"
-        } else if notaFinal < 6 && (presenca/128)*100 >= 75 {
-            situacaoFinal = "REPROVADO POR NOTA"
-        } else if notaFinal >= 6 && (presenca/128)*100 < 75 {
-            situacaoFinal = "REPROVADO POR FREQUENCIA"
-        } else {
-            situacaoFinal = "REPROVADO POR NOTA E POR FREQUENCIA"
-        }
+	mediatotal := (0.7 * mnota / 8) + (0.15 * mlista / 5) + (0.15 * notatrabalhofinal)
 
-        fmt.Printf("Matricula: %d, Nota Final: %.2f, Situacao Final: %s\n", matricula, notaFinal, situacaoFinal)
-    }
+	if mediatotal >= 6 && freq >= 96 {
+		println("aprovado")
+	} else if mediatotal >= 6 && freq < 96 {
+		println("reprovado por falta")
+	} else if mediatotal < 6 && freq >= 96 {
+		println("reprovado por falta")
+	} else {
+
+		fmt.Println("reprovado por nota e falta")
+	}
+
 }

@@ -2,22 +2,25 @@ package main
 
 import "fmt"
 
-func fatorial(n int) int {
-    if n == 0 {
-        return 1
-    }
-    result := 1
-    for i := 1; i <= n; i++ {
-        result *= i
-    }
-    return result
-}
+var numero int
 
 func main() {
-    var n int
-    fmt.Scan(&n)
 
-    resultado := fatorial(n)
+	fmt.Printf("digite um numero \n")
+	fmt.Scanln(&numero)
 
-    fmt.Printf("%d! = %d\n", n, resultado)
+	fatorial := make([]int, numero)
+
+	fat := 1
+
+	for i := 0; i < numero; i++ {
+
+		fatorial[i] = (numero - i)
+
+		fat *= fatorial[i]
+
+	}
+
+	fmt.Println(fat)
+
 }
