@@ -21,12 +21,12 @@ func main() {
 		values[i], _ = strconv.Atoi(numStr)
 	}
 
-	// Imprime os valores na ordem inversa
-	for i := n - 1; i >= 0; i-- {
-		if i != n-1 {
+	// Imprime os valores lidos
+	for i, val := range values {
+		if i != 0 {
 			fmt.Print(" ")
 		}
-		fmt.Print(values[i])
+		fmt.Print(val)
 	}
 	fmt.Println()
 }

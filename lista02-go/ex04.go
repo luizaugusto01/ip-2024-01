@@ -1,34 +1,29 @@
 package main
-
 import "fmt"
 
 func main() {
-    var n, i, K int
-    var s float64
+    var n, i, k, s float64
 
-    fmt.Scan(&n, &i, &K, &s)
+    fmt.Println("Digite um número n (0 a 9)")
+    fmt.Scanln(&n)
 
-    fmt.Println("Tabuada de soma:")
-    for j := 0; j < K; j++ {
-        resultado := float64(n) + float64(i+j)*s
-        fmt.Printf("%d + %.2f = %.2f\n", n, float64(i+j)*s, resultado)
+
+    fmt.Println("digite o valor inicial i")
+    fmt.Scanln(&i)
+
+    fmt.Println("digite o número de valores k:")
+    fmt.Scanln(&K)
+
+    fmt.Println("digite o valor k:")
+    fmt.Scanln(&s)
+
+    values := make([]float64, int(k))
+    for j := range values {
+        values[j] = i + flaot64(j)*s
     }
 
-    fmt.Println("Tabuada de subtracao:")
-    for j := 0; j < K; j++ {
-        resultado := float64(n) - float64(i+j)*s
-        fmt.Printf("%d - %.2f = %.2f\n", n, float64(i+j)*s, resultado)
-    }
-
-    fmt.Println("Tabuada de multiplicacao:")
-    for j := 0; j < K; j++ {
-        resultado := float64(n) * float64(i+j)*s
-        fmt.Printf("%d * %.2f = %.2f\n", n, float64(i+j)*s, resultado)
-    }
-
-    fmt.Println("Tabuada de divisao:")
-    for j := 0; j < K; j++ {
-        resultado := float64(n) / float64(i+j)*s
-        fmt.Printf("%d / %.2f = %.2f\n", n, float64(i+j)*s, resultado)
+    fmt.Println("tabuada de soma :")
+    for _, B := n + B {
+    fmt.Printf("%.2f + %.2f = %.2f\n", n, B,)
     }
 }
