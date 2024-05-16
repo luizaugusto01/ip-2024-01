@@ -7,34 +7,23 @@ import (
 )
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-
 	for {
-		// Lendo os dados de entrada
 		var matricula int
-		var horasTrabalhadas, valorHora float64
-
-		fmt.Print("Digite a matrícula, horas trabalhadas e valor por hora (separados por espaço): ")
-		_, err := fmt.Scan(&matricula, &horasTrabalhadas, &valorHora)
+		var horastrabalhadas, valorporhora float64
+		fmt.Println("me passe os dados :")
+		_, err := fmt.Scanf("%d %f %f\n", &matricula, &horastrabalhadas, &valorporhora)
 		if err != nil {
-			fmt.Println("Erro ao ler os dados:", err)
+			fmt.Println("Erro ao ler a entrada:", err)
 			return
 		}
-
-		// Verificando se a matrícula é zero (fim da entrada)
 		if matricula == 0 {
 			break
 		}
+		salario := horastrabalhadas * valorporhora
 
-		// Calculando o salário
-		salario := horasTrabalhadas * valorHora
+		fmt.Printf("%d %.2f\n", matricula, salario)
 
-		// Imprimindo o resultado
-		fmt.Printf("Matrícula: %d Salário: %.2f\n", matricula, salario)
-
-		// Consumindo o caractere de quebra de linha da entrada
-		if scanner.Scan() {
-			scanner.Text()
-		}
+		bufio.NewReader(os.Stdin).ReadByte()
 	}
+
 }

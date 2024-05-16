@@ -1,36 +1,42 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	var (
-		numero, somaPar, somaImpar float64
-		contagemPar, contagemImpar int
-	)
 
-	// Ler a sequência de números inteiros
-	fmt.Println("Digite uma sequência de números inteiros (digite 0 para encerrar):")
+	var numeros []float64
+	i := 0
 	for {
-		fmt.Scan(&numero)
-		if numero == 0 {
-			break // Encerra a entrada de dados
-		}
+		var num float64
 
-		// Verificar se o número é par ou ímpar e somar à soma correspondente
-		if numero%2 == 0 {
-			somaPar += numero
-			contagemPar++
-		} else {
-			somaImpar += numero
-			contagemImpar++
+		i++
+		fmt.Println("digite o número ", i)
+		fmt.Scan(&num)
+		if num == 0 {
+			break
 		}
+		numeros = append(numeros, num)
 	}
+	var somapar, somaimpar float64
+	var countpar, countimpar int
 
-	// Calcular as médias dos números pares e ímpares
-	mediaPar := somaPar / float64(contagemPar)
-	mediaImpar := somaImpar / float64(contagemImpar)
+	for _, num := range numeros {
+		if int(num)%2 == 0 {
+			somapar += num
+			countpar++
 
-	// Imprimir as médias com até duas casas decimais
-	fmt.Printf("MEDIA PAR = %.2f\n", mediaPar)
-	fmt.Printf("MEDIA IMPAR = %.2f\n", mediaImpar)
+		} else {
+			somaimpar += num
+			countimpar++
+		}
+
+	}
+	mediapar := somapar / float64(countpar)
+	mediaimpar := somaimpar / float64(countimpar)
+
+	fmt.Printf("media par = %.2f\n", mediapar)
+	fmt.Printf("media impar = %.2f\n", mediaimpar)
+
 }

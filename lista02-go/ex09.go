@@ -2,31 +2,30 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	var n int
-	fmt.Print("Digite um número inteiro positivo: ")
-	_, err := fmt.Scan(&n)
+	var N int
+	fmt.Println("digite o numero inteiro positivo:")
+	fmt.Scan(&N)
 
-	if err != nil || n <= 1 {
-		fmt.Println("Numero invalido!")
+	if N <= 1 {
+		fmt.Println("Núemro invalido ")
 		return
 	}
 
 	primo := true
-	limite := int(math.Sqrt(float64(n))) + 1
-	for i := 2; i < limite; i++ {
-		if n%i == 0 {
+	for i := 2; i*i <= N; i++ {
+		if N%i == 0 {
 			primo = false
 			break
 		}
 	}
 
 	if primo {
-		fmt.Println("PRIMO")
+		fmt.Println("o número é primo")
+
 	} else {
-		fmt.Println("NAO PRIMO")
+		fmt.Println("nao primo")
 	}
 }

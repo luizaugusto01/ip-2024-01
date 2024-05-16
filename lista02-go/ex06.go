@@ -33,6 +33,12 @@ func main() {
 		}
 	}
 
+	if maiorSubsequencia == 1 {
+		fmt.Printf("Não existe uma subsequencia ")
+		return
+
+	}
+
 	// Imprimindo o resultado
 	fmt.Printf("A maior subsequência de elementos iguais possui %d elementos.\n", maiorSubsequencia)
 }

@@ -6,38 +6,33 @@ import (
 
 func main() {
 	var n int
-	fmt.Scan(&n)
 
-	// Lê a sequência de números inteiros
+	fmt.Println("digite o valor de n")
+	fmt.Scanln(&n)
+
 	sequencia := make([]int, n)
-	for i := 0; i < n; i++ {
-		fmt.Scan(&sequencia[i])
+
+	fmt.Println("digite o número de elementos na sequencia: ")
+	for I := range sequencia {
+		fmt.Println("digite o valor de ", I)
+		fmt.Scanln(&sequencia[I])
 	}
 
-	// Inicializa o comprimento do segmento crescente atual e o máximo
-	comprimentoAtual := 1
-	comprimentoMaximo := 1
+	comprimentomaximo := 0
+	comprimentoatual := 1
 
-	// Percorre a sequência para encontrar o comprimento máximo do segmento crescente
 	for i := 1; i < n; i++ {
 		if sequencia[i] > sequencia[i-1] {
-			comprimentoAtual++
+			comprimentoatual++
 		} else {
-			// Se o segmento terminar, atualiza o comprimento máximo, se necessário
-			if comprimentoAtual > comprimentoMaximo {
-				comprimentoMaximo = comprimentoAtual
+			if comprimentoatual > comprimentomaximo {
+				comprimentomaximo = comprimentoatual
 			}
-			comprimentoAtual = 1
+			comprimentoatual = 1
 		}
 	}
-
-	// Verifica se o comprimento atual é maior que o máximo
-	if comprimentoAtual > comprimentoMaximo {
-		comprimentoMaximo = comprimentoAtual
+	if comprimentoatual > comprimentomaximo {
+		comprimentomaximo = comprimentoatual
 	}
-
-	// O comprimento do segmento é o tamanho do maior segmento menos um
-	resultado := comprimentoMaximo - 1
-
-	fmt.Printf("O comprimento do segmento crescente maximo e: %d\n", resultado)
+	fmt.Printf("O comprimento do segmento crescente maximo é: %d\n", comprimentomaximo-1)
 }

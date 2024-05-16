@@ -3,21 +3,22 @@ package main
 import "fmt"
 
 func main() {
-	var n int
-	fmt.Print("Digite o número de times no campeonato: ")
-	fmt.Scan(&n)
+	var N int
+	fmt.Println("Digite a quantidade de times:")
+	fmt.Scan(&N)
 
-	if n < 2 {
-		fmt.Println("Campeonato inválido!")
+	if N < 2 {
+		fmt.Println("Campeonato Inváido!")
 		return
 	}
 
-	fmt.Println("Finais possíveis:")
-	k := 1
-	for i := 1; i <= n; i++ {
-		for j := i + 1; j <= n; j++ {
-			fmt.Printf("Final %d: Time%d X Time%d\n", k, i, j)
-			k++
+	count := 1
+	for i := 0; i < N-1; i++ {
+		for j := i + 1; j < N; j++ {
+			TimeA := string('A' + i)
+			TimeB := string('A' + j)
+			fmt.Printf("Final %d: Time %s contra Time %s\n", count, TimeA, TimeB)
+			count++
 		}
 	}
 }
