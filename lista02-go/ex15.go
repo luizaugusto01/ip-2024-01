@@ -1,48 +1,40 @@
 package main
 
-import (
-	"fmt"
-	"strconv"
-)
+import "fmt"
 
 func main() {
-	var T int
+	var T, A, B int
 	fmt.Scan(&T)
 
 	for i := 0; i < T; i++ {
-		var A, B int
 		fmt.Scan(&A, &B)
 
-		// Invertendo os números
-		AInvertido := inverterNumero(A)
-		BInvertido := inverterNumero(B)
+		// Inverte os dígitos de A e B
+		A = reverseNumber(A)
+		B = reverseNumber(B)
 
-		// Verificando qual é o maior número invertido
-		var maiorInvertido int
-		if AInvertido > BInvertido {
-			maiorInvertido = AInvertido
+		// Determina qual número é maior
+		if A > B {
+			fmt.Println(reverseNumber(A))
 		} else {
-			maiorInvertido = BInvertido
+			fmt.Println(reverseNumber(B))
 		}
-
-		// Imprimindo o maior número invertido
-		fmt.Println(maiorInvertido)
+	}
+	// Determina qual número é maior
+	if A > B {
+		fmt.Println(reverseNumber(A))
+	} else {
+		fmt.Println(reverseNumber(B))
 	}
 }
 
-// Função para inverter um número
-func inverterNumero(num int) int {
-	// Convertendo o número para string para facilitar a inversão
-	numString := strconv.Itoa(num)
-
-	// Invertendo a string
-	invertido := ""
-	for i := len(numString) - 1; i >= 0; i-- {
-		invertido += string(numString[i])
+// Função para inverter os dígitos de um número
+func reverseNumber(n int) int {
+	var reversed int
+	for n > 0 {
+		digit := n % 10
+		reversed = reversed*10 + digit
+		n /= 10
 	}
-
-	// Convertendo a string invertida de volta para número
-	numInvertido, _ := strconv.Atoi(invertido)
-
-	return numInvertido
+	return reversed
 }

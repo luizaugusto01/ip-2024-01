@@ -11,15 +11,16 @@ func main() {
 
 	for n := 1; n <= m; n++ {
 		sum := 0
-		fmt.Printf("%d*%d*%d =", n, n, n)
+		fmt.Printf("%d*%d*%d = ", n, n, n)
 		for i := 0; i < n; i++ {
-			odd := 2*i + 1
+			odd := (n-1)*n + 1 + 2*i
 			sum += odd
-			if i > 0 {
-				fmt.Printf(" +")
+			if i < n-1 {
+				fmt.Printf("%d+", odd)
+			} else {
+				fmt.Printf("%d", odd)
 			}
-			fmt.Printf(" %d", odd)
 		}
-		fmt.Printf(" = %d\n", sum)
+		fmt.Println()
 	}
 }

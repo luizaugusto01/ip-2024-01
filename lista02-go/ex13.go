@@ -1,29 +1,31 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	var n int
-	fmt.Scanln(&n)
+	fmt.Scan(&n)
 
-	grains := calcularGraos(n)
-	fmt.Println(grains)
-}
+	// Inicializa um array para representar o tabuleiro
+	var tabuleiro [64]int
 
-func calcularGraos(n int) int {
-	var totalGraos int
-
-	// Percorrer o tabuleiro de 64 quadros
-	for i := 0; i < 64; i++ {
-		// Calcular o número de grãos para o quadro atual
+	// Preenche o tabuleiro com a quantidade de grãos em cada quadrado
+	for i := range tabuleiro {
 		if i%2 == 0 {
-			totalGraos += n // Quadro branco, mesma quantidade de grãos
+			tabuleiro[i] = n
 		} else {
-			totalGraos += n * (1 << (i / 2)) // Quadro escuro, dobrar progressivamente
+			tabuleiro[i] = 2 * n
+		}
+		if i >= 8 && i%8 == 0 {
+			n *= 2
 		}
 	}
 
-	return totalGraos
+	// Calcula a quantidade total de grãos no tabuleiro
+	total := 0
+	for _, valor := range tabuleiro {
+		total += valor
+	}
+
+	fmt.Println(total)
 }
