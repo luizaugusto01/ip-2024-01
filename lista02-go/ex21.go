@@ -5,35 +5,31 @@ import (
 )
 
 func main() {
+	var n int
 	for {
-		var size int
-		fmt.Scan(&size)
-
-		// Verifica se é o fim da entrada
-		if size == 0 {
+		fmt.Scan(&n)
+		if n == 0 {
 			break
 		}
 
-		// Lê a sequência de números
-		sequence := make([]float64, size)
-		for i := 0; i < size; i++ {
+		sequence := make([]float64, n)
+		for i := 0; i < n; i++ {
 			fmt.Scan(&sequence[i])
 		}
 
-		// Verifica se a sequência está em ordem crescente
-		ordered := true
-		for i := 1; i < size; i++ {
-			if sequence[i-1] >= sequence[i] {
-				ordered = false
-				break
-			}
-		}
-
-		// Imprime o resultado
-		if ordered {
+		if isOrdered(sequence) {
 			fmt.Println("ORDENADA")
 		} else {
 			fmt.Println("DESORDENADA")
 		}
 	}
+}
+
+func isOrdered(seq []float64) bool {
+	for i := 1; i < len(seq); i++ {
+		if seq[i-1] >= seq[i] {
+			return false
+		}
+	}
+	return true
 }
