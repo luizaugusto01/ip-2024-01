@@ -4,37 +4,31 @@ import "fmt"
 
 func main() {
 	var N int
-	fmt.Scanln(&N)
+	fmt.Scan(&N)
 
-	notas := make([]int, N)
+	// Armazenar as notas e a frequência de cada nota
+	notas := make(map[int]int)
+	var ultimaNota, maiorNota, indicePrimeiraOcorrencia int
+
 	for i := 0; i < N; i++ {
-		fmt.Scanln(&notas[i])
-	}
+		var nota int
+		fmt.Scan(&nota)
 
-	// Última nota informada
-	ultimaNota := notas[N-1]
+		// Atualizar a frequência da última nota informada
+		ultimaNota = nota
+		notas[nota]++
 
-	// Frequência da última nota
-	frequencia := 0
-	for _, nota := range notas {
-		if nota == ultimaNota {
-			frequencia++
-		}
-	}
-
-	// Maior nota e sua primeira ocorrência
-	maiorNota := notas[0]
-	primeiraOcorrencia := 0
-	for i, nota := range notas {
+		// Atualizar a maior nota e sua posição (primeira ocorrência)
 		if nota > maiorNota {
 			maiorNota = nota
-		}
-		if nota == maiorNota && i < primeiraOcorrencia {
-			primeiraOcorrencia = i
+			indicePrimeiraOcorrencia = i
 		}
 	}
 
-	// Exibição dos resultados
-	fmt.Printf("%d\n", frequencia)
-	fmt.Printf("%d %d\n", maiorNota, primeiraOcorrencia)
+	// Obter a frequência da última nota informada
+	frequenciaUltimaNota := notas[ultimaNota]
+
+	// Imprimir a frequência da última nota e a maior nota com sua posição
+	fmt.Printf("Nota %d, %d vezes ", ultimaNota, frequenciaUltimaNota)
+	fmt.Printf("Nota %d, indice %d\n", maiorNota, indicePrimeiraOcorrencia)
 }

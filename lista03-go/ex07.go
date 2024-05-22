@@ -1,72 +1,45 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"strconv"
-	"strings"
-)
+import "fmt"
 
 func main() {
-	// Scanner para ler a entrada
-	scanner := bufio.NewScanner(os.Stdin)
-
 	for {
-		// Ler o tamanho do vetor N
-		scanner.Scan()
-		nStr := scanner.Text()
-		n, err := strconv.Atoi(nStr)
-		if err != nil {
-			fmt.Println("Erro ao converter N:", err)
-			return
-		}
-
-		// Encerrar o loop se N for 0
-		if n == 0 {
+		var N int
+		fmt.Scan(&N)
+		if N == 0 {
 			break
 		}
 
-		// Ler os valores do vetor
-		scanner.Scan()
-		valoresStr := strings.Fields(scanner.Text())
-
-		// Verificar se o número de valores corresponde a N
-		if len(valoresStr) != n {
-			fmt.Println("Número de elementos não corresponde a N")
+		if N <= 1 || N > 10000 {
 			return
 		}
 
-		// Converter os valores para inteiros
-		valores := make([]int, n)
-		for i, valorStr := range valoresStr {
-			valor, err := strconv.Atoi(valorStr)
-			if err != nil {
-				fmt.Println("Erro ao converter um valor:", err)
-				return
-			}
-			valores[i] = valor
+		values := make([]int, N)
+		for i := 0; i < N; i++ {
+			fmt.Scan(&values[i])
 		}
 
-		// Encontrar o maior valor no vetor
-		maior := 0
-		for _, valor := range valores {
-			if valor > maior {
-				maior = valor
+		// Encontrar o maior elemento do vetor
+		maxValue := values[0]
+		for i := 1; i < N; i++ {
+			if values[i] > maxValue {
+				maxValue = values[i]
 			}
 		}
 
-		// Contar a frequência dos valores menores ou iguais a cada valor de i
-		frequencias := make([]int, maior+1)
-		for _, valor := range valores {
-			for i := 0; i <= valor; i++ {
-				frequencias[i]++
+		// Inicializar um slice de frequência com tamanho igual a maxValue+1
+		frequencies := make([]int, maxValue+1)
+
+		// Calcular a frequência dos valores menores ou iguais a cada valor entre 0 e maxValue
+		for i := 0; i < N; i++ {
+			for j := 0; j <= values[i]; j++ {
+				frequencies[j]++
 			}
 		}
 
-		// Imprimir a saída no formato desejado
-		for i := 0; i <= maior; i++ {
-			fmt.Printf("(%d) %d\n", i, frequencias[i])
+		// Imprimir as frequências
+		for i := 0; i <= maxValue; i++ {
+			fmt.Printf("(%d) %d\n", i, frequencies[i])
 		}
 	}
 }

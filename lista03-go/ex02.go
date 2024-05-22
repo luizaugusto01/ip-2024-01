@@ -2,42 +2,37 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	var n int
-
-	// Leitura do valor de N
+	var N int
 	for {
-		fmt.Scanln(&n)
-		if n >= 1 && n <= 1000 {
+		_, err := fmt.Scan(&N)
+		if err == nil && N >= 1 && N <= 1000 {
 			break
 		}
 	}
 
-	// Leitura dos valores do vetor V
-	var vInput string
-	fmt.Scanln(&vInput)
-	vStrings := strings.Split(vInput, " ")
-	v := make([]int, n)
-	for i, numStr := range vStrings {
-		v[i], _ = strconv.Atoi(numStr)
+	V := make([]int, N)
+	for i := 0; i < N; i++ {
+		_, err := fmt.Scan(&V[i])
+		if err != nil {
+			return
+		}
 	}
 
-	// Leitura do valor de K
-	var k int
-	fmt.Scanln(&k)
+	var K int
+	_, err := fmt.Scan(&K)
+	if err != nil {
+		return
+	}
 
-	// Contabiliza quantos elementos são maiores ou iguais a K
 	count := 0
-	for _, num := range v {
-		if num >= k {
+	for _, value := range V {
+		if value >= K {
 			count++
 		}
 	}
 
-	// Imprime o resultado
 	fmt.Println(count)
 }

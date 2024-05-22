@@ -1,46 +1,26 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	// Criar um scanner para ler a entrada
-	scanner := bufio.NewScanner(os.Stdin)
+	var n int
+	fmt.Scan(&n)
 
-	// Ler o primeiro valor que é o número de elementos
-	scanner.Scan()
-	n, err := strconv.Atoi(scanner.Text())
-	if err != nil {
-		fmt.Println("Erro ao converter o número de elementos:", err)
+	if n <= 0 || n >= 5000 {
 		return
 	}
 
-	// Ler a segunda linha que contém os valores
-	scanner.Scan()
-	valoresStr := strings.Fields(scanner.Text())
-
-	// Verificar se o número de valores corresponde a n
-	if len(valoresStr) != n {
-		fmt.Println("Número de elementos não corresponde a n")
-		return
+	values := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&values[i])
 	}
 
-	// Converter os valores para inteiros e somá-los
-	soma := 0
-	for _, valorStr := range valoresStr {
-		valor, err := strconv.Atoi(valorStr)
-		if err != nil {
-			fmt.Println("Erro ao converter um valor:", err)
-			return
-		}
-		soma += valor
+	sum := 0
+	for _, value := range values {
+		sum += value
 	}
 
-	// Imprimir a soma dos valores
-	fmt.Println(soma)
+	fmt.Println(sum)
 }

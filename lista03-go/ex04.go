@@ -2,31 +2,28 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
 func main() {
 	var n int
-
-	// Leitura do valor de n
-	fmt.Scanln(&n)
-
-	// Leitura dos n valores inteiros
-	var valuesStr string
-	fmt.Scanln(&valuesStr)
-	valuesStrings := strings.Split(valuesStr, " ")
-	values := make([]int, n)
-	for i, numStr := range valuesStrings {
-		values[i], _ = strconv.Atoi(numStr)
+	_, err := fmt.Scan(&n)
+	if err != nil || n >= 5000 {
+		return
 	}
 
-	// Imprime os valores lidos
-	for i, val := range values {
-		if i != 0 {
+	values := make([]int, n)
+	for i := 0; i < n; i++ {
+		_, err := fmt.Scan(&values[i])
+		if err != nil {
+			return
+		}
+	}
+
+	for i := 0; i < n; i++ {
+		fmt.Print(values[i])
+		if i != n-1 {
 			fmt.Print(" ")
 		}
-		fmt.Print(val)
 	}
 	fmt.Println()
 }

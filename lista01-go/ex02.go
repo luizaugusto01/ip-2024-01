@@ -26,6 +26,6 @@ func main() {
 
 		rendatotal = (percpopular * float64(pessoatotal) * 1) + (pergeral * float64(pessoatotal) * 5) + (perarquibancada * float64(pessoatotal) * 10) + (percadeiras * float64(pessoatotal) * 20)
 
-		fmt.Printf("A renda do jogo %v é %v\n\n", casosteste, rendatotal)
+		fmt.Printf("A renda do jogo %v é %v\n\n", i, rendatotal)
 	}
 }

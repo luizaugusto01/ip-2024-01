@@ -2,42 +2,35 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	var n int
+	// Leitura do tamanho do vetor N e dos valores do vetor V
+	var N int
+	fmt.Scan(&N)
+	vetorV := make([]int, N)
+	for i := 0; i < N; i++ {
+		fmt.Scan(&vetorV[i])
+	}
 
-	// Leitura do valor de N
-	for {
-		fmt.Scanln(&n)
-		if n >= 1 && n <= 1000 {
-			break
+	// Armazenando os valores de V em um mapa para busca eficiente
+	mapV := make(map[int]struct{}, N)
+	for _, num := range vetorV {
+		mapV[num] = struct{}{}
+	}
+
+	// Leitura do número de buscas M
+	var M int
+	fmt.Scan(&M)
+
+	// Leitura dos M números a serem buscados no vetor V e realização das buscas
+	for i := 0; i < M; i++ {
+		var busca int
+		fmt.Scan(&busca)
+		if _, found := mapV[busca]; found {
+			fmt.Println("ACHEI")
+		} else {
+			fmt.Println("NAO ACHEI")
 		}
 	}
-
-	// Leitura dos valores do vetor V
-	var vInput string
-	fmt.Scanln(&vInput)
-	vStrings := strings.Split(vInput, " ")
-	v := make([]int, n)
-	for i, numStr := range vStrings {
-		v[i], _ = strconv.Atoi(numStr)
-	}
-
-	// Leitura do valor de K
-	var k int
-	fmt.Scanln(&k)
-
-	// Contabiliza quantos elementos são maiores ou iguais a K
-	count := 0
-	for _, num := range v {
-		if num >= k {
-			count++
-		}
-	}
-
-	// Imprime o resultado
-	fmt.Println(count)
 }

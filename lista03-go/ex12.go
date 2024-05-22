@@ -18,6 +18,7 @@ func main() {
 	sort.Ints(nums)
 
 	for _, num := range nums {
+		fmt.Println("-")
 		fmt.Println(num)
 	}
 

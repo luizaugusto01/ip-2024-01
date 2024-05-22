@@ -2,39 +2,37 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
 func main() {
 	for {
-		// Leitura do valor de N
-		var n int
-		fmt.Scanln(&n)
-
-		// Verifica se N é 0, indicando o fim da entrada
-		if n == 0 {
+		var N int
+		_, err := fmt.Scan(&N)
+		if err != nil || N == 0 {
 			break
 		}
 
-		// Leitura dos valores do vetor
-		var valuesStr string
-		fmt.Scanln(&valuesStr)
-		values := strings.Split(valuesStr, " ")
+		if N <= 1 || N > 10000 {
+			return
+		}
 
+		values := make([]int, N)
+		for i := 0; i < N; i++ {
+			_, err := fmt.Scan(&values[i])
+			if err != nil {
+				return
+			}
+		}
+
+		maxValue := values[0]
 		maxIndex := 0
-		maxValue := 0
-
-		// Encontra o maior valor e seu índice
-		for i := 0; i < n; i++ {
-			val, _ := strconv.Atoi(values[i])
-			if i == 0 || val > maxValue {
-				maxValue = val
+		for i := 1; i < N; i++ {
+			if values[i] > maxValue {
+				maxValue = values[i]
 				maxIndex = i
 			}
 		}
 
-		// Imprime o índice e o maior valor
 		fmt.Printf("%d %d\n", maxIndex, maxValue)
 	}
 }

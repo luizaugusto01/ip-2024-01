@@ -1,42 +1,33 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
+	var n int
+	fmt.Scan(&n)
 
-	// Leitura da primeira linha que contém o valor de n
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-
-	// Leitura da segunda linha que contém os valores inteiros
-	scanner.Scan()
-	secondLine := scanner.Text()
-	elements := strings.Split(secondLine, " ")
-
-	// Mapa para contar as ocorrências de cada número
-	occurrences := make(map[int]int)
-
-	// Preenchendo o mapa com as contagens
+	// Ler a sequência de inteiros
+	nums := make([]int, n)
 	for i := 0; i < n; i++ {
-		num, _ := strconv.Atoi(elements[i])
-		occurrences[num]++
+		fmt.Scan(&nums[i])
 	}
 
-	// Contando os números que aparecem exatamente uma vez
-	uniqueCount := 0
-	for _, count := range occurrences {
-		if count == 1 {
-			uniqueCount++
+	// Criar um mapa para contar a frequência de cada elemento
+	frequency := make(map[int]int)
+	for _, num := range nums {
+		frequency[num]++
+	}
+
+	// Contar o número de elementos únicos que aparecem apenas uma vez
+	count := 0
+	for _, freq := range frequency {
+		if freq == 1 {
+			count++
 		}
 	}
 
-	// Imprimindo o resultado
-	fmt.Println(uniqueCount)
+	// Imprimir o número de elementos únicos que aparecem apenas uma vez
+	fmt.Println(count)
 }
