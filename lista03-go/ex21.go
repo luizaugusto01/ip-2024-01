@@ -1,48 +1,32 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"sort"
-	"strconv"
 )
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
+	var N int
+	fmt.Scanln(&N)
 
-	// Ler a quantidade de números a serem processados
-	scanner.Scan()
-	N, _ := strconv.Atoi(scanner.Text())
-
-	// Slices para armazenar os números pares e ímpares
-	var pares []int
-	var impares []int
-
-	// Ler os números e separar em pares e ímpares
+	nums := make([]int, N)
 	for i := 0; i < N; i++ {
-		scanner.Scan()
-		num, _ := strconv.Atoi(scanner.Text())
-		if num%2 == 0 {
-			pares = append(pares, num)
+		fmt.Scanln(&nums[i])
+	}
+
+	sort.SliceStable(nums, func(i, j int) bool {
+		if nums[i]%2 == nums[j]%2 {
+			if nums[i]%2 == 0 {
+				return nums[i] < nums[j]
+			} else {
+				return nums[i] > nums[j]
+			}
 		} else {
-			impares = append(impares, num)
+			return nums[i]%2 == 0
 		}
-	}
+	})
 
-	// Ordenar os pares em ordem crescente
-	sort.Ints(pares)
-
-	// Ordenar os ímpares em ordem decrescente
-	sort.Sort(sort.Reverse(sort.IntSlice(impares)))
-
-	// Imprimir os pares
-	for _, num := range pares {
-		fmt.Println(num)
-	}
-
-	// Imprimir os ímpares
-	for _, num := range impares {
+	for _, num := range nums {
 		fmt.Println(num)
 	}
 }
